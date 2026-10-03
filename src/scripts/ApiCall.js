@@ -5,7 +5,7 @@ class weatherAPIData {
 
   async getCurrWeatherData() {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city}?unitGroup=metric&include=days&key=X9XTUW6LCMB5SDN7VEBEZ2ABD&contentType=json`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city}/?unitGroup=metric&include=days&key=X9XTUW6LCMB5SDN7VEBEZ2ABD&contentType=json`,
     );
     const responseJSON = await response.json();
     let currWeather = responseJSON.days[0];
@@ -16,11 +16,10 @@ class weatherAPIData {
       temp: currWeather.temp,
       maxTemp: currWeather.tempmax,
       minTemp: currWeather.tempmin,
-      UVIndex: currWeather.uv,
-      precipProb: currWeather.precipProb,
-      visiblity: currWeather.visiblity,
+      UVIndex: currWeather.uvindex,
+      precipProb: currWeather.precipprob,
+      visiblity: currWeather.visibility,
     };
-
     return currWeatherData;
   }
 }
