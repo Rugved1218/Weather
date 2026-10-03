@@ -19,6 +19,7 @@ class weatherAPIData {
       UVIndex: currWeather.uvindex,
       precipProb: currWeather.precipprob,
       visiblity: currWeather.visibility,
+      humidity: currWeather.humidity,
     };
     return currWeatherData;
   }

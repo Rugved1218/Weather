@@ -12,6 +12,10 @@ export async function searchWeathLoc() {
   city = stringFn.capitallize(city);
   console.log("City:", city);
 
+  let date = currWeatherData.date;
+  date = stringFn.convertDate(date);
+  console.log(date);
+
   let weather = currWeatherData.weather;
   weather = stringFn.title(weather);
   console.log("Weather:", weather);
@@ -27,4 +31,20 @@ export async function searchWeathLoc() {
   let minTemp = currWeatherData.minTemp;
   minTemp = stringFn.temperatureF(minTemp);
   console.log("Temp Min:", minTemp);
+
+  let uv = currWeatherData.UVIndex;
+  const uvHealth = stringFn.uvHealth(uv);
+  console.log(`UV Index: ${uv} (${uvHealth})`);
+
+  let humidity = currWeatherData.humidity;
+  humidity = stringFn.percentage(humidity);
+  console.log("Humidity:", humidity);
+
+  let precipProb = currWeatherData.precipProb;
+  precipProb = stringFn.percentage(precipProb);
+  console.log("Precipitation Probablity:", precipProb);
+
+  let visiblity = currWeatherData.visiblity;
+  visiblity = stringFn.distKm(visiblity);
+  console.log("Visiblity:", visiblity);
 }
