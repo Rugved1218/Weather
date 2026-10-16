@@ -2,9 +2,7 @@ import { weatherAPIData } from "./ApiCall.js";
 import { StringFn } from "../HelperFn/strings.js";
 const stringFn = new StringFn();
 
-export async function searchWeathLoc() {
-  const citySearch = window.prompt("Enter City");
-  //const citySearch = "pune";
+export async function searchWeathLoc(citySearch) {
   const weatherData = new weatherAPIData(citySearch);
   const currWeatherData = await weatherData.getCurrWeatherData();
 
