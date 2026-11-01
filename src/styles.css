@@ -89,3 +89,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.weatherDisplay {
+  display: grid;
+  grid-template-rows: 75fr 25fr;
+}
