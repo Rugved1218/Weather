@@ -94,3 +94,20 @@ body {
   display: grid;
   grid-template-rows: 75fr 25fr;
 }
+
+.current {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+}
+
+.currWeatherInfo {
+  display: grid;
+  grid-template-rows: 20fr 80fr;
+}
+
+.currDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
