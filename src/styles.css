@@ -59,37 +59,6 @@ body {
   transform: scale(0.95);
 }
 
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.contentBox {
-  width: min(80vw, 800px);
-  aspect-ratio: 1.5/1;
-  max-height: 80vh;
-  background-color: antiquewhite;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 60fr 40fr;
-  padding: 20px;
-}
-
-.weatherPic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: 1px solid gray;
-}
-
-.weatherDetail {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .weatherDisplay {
   display: grid;
   grid-template-rows: 75fr 25fr;
@@ -105,9 +74,56 @@ body {
   grid-template-rows: 20fr 80fr;
 }
 
+.tableHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.currConditionsTableBodyCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.currConditionsTableBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 50px;
+}
+
 .currDate {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.currWeatherDesign {
+  display: grid;
+  grid-template-rows: 60fr 40fr;
+}
+
+.currWeatherIconCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.currWeatherText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.currWeatherText > div {
+  font-size: 32px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-weight: 400;
 }
