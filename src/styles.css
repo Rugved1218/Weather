@@ -1,3 +1,12 @@
+:root {
+  --clearWeatherColor: #4da8f0;
+  --partlyCloudyWeatherColor: #d9dee3;
+  --cloudyWeatherColor: #b0b7bf;
+  --fogWeatherColor: #e4e1da;
+  --rainWeatherColor: #4a5560;
+  --snowWeatherColor: #c5d8d6;
+}
+
 body {
   margin: 0;
 }
@@ -8,7 +17,7 @@ body {
   display: grid;
   grid-template-rows: 10fr 90fr;
 
-  background-color: lightgray;
+  background-color: var(--snowWeatherColor);
 }
 
 .header {
