@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Lora:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="contentGrid">
@@ -43,11 +49,11 @@
                   </div>
                   <div class="maxTempBox">
                     <div class="maxTempHead heading">Max Temp</div>
-                    <div class="maxTempBody body">32°C</div>
+                    <div class="maxTempBody body">32 °C</div>
                   </div>
                   <div class="minTempBox">
                     <div class="minTempHead heading">Min Temp</div>
-                    <div class="minTempBody body">21°C</div>
+                    <div class="minTempBody body">21 °C</div>
                   </div>
                   <div class="precipProbBox">
                     <div class="precipProbHead heading">Precipitation Probability</div>
@@ -71,7 +77,109 @@
             </div>
           </div>
         </div>
-        <div class="sevenDaysCast"></div>
+        <div class="sevenDaysCast">
+          <div class="sevenDaysHeading">7 days Forecast</div>
+          <div class="sevenDaysForecastTable">
+            <div class="day1 sevenDays dayBox">
+              <div class="dayName sevenDays">Friday (Today)</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/clear-day.svg"
+                  alt="clear-day-static"
+                />
+              </div>
+              <div class="temp sevenDays">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day2 sevenDays dayBox">
+              <div class="dayName sevenDays">Saturday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/cloudy.svg"
+                  alt="cloudy-day-static"
+                />
+              </div>
+              <div class="temp sevenDays">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day3 sevenDays dayBox">
+              <div class="dayName sevenDays">Sunday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/fog.svg"
+                  alt="fog-day-static"
+                />
+              </div>
+              <div class="temp sevenDays">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day4 sevenDays dayBox">
+              <div class="dayName sevenDays">Monday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/partly-cloudy-day.svg"
+                  alt="partly-cloudy-day-static"
+                />
+              </div>
+              <div class="temp sevenDays dayBox">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day5 sevenDays dayBox">
+              <div class="dayName sevenDays">Tuesday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/rain.svg"
+                  alt="rain-day-static"
+                />
+              </div>
+              <div class="temp sevenDays dayBox">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day6 sevenDays dayBox">
+              <div class="dayName sevenDays">Wednesday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/snow.svg"
+                  alt="snow-day-static"
+                />
+              </div>
+              <div class="temp sevenDays">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+            <div class="day7 sevenDays dayBox">
+              <div class="dayName sevenDays">Thursday</div>
+              <div class="icon sevenDays">
+                <img
+                  class="icon sevenDays"
+                  src="./weatherIcons/staticIcons/wind.svg"
+                  alt="wind-day-static"
+                />
+              </div>
+              <div class="temp sevenDays">
+                <div class="maxTemp sevenDays">32 °C</div>
+                <div class="minTemp sevenDays">21 °C</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

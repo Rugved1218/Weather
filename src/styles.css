@@ -5,15 +5,66 @@
   --fogWeatherColor: #e4e1da;
   --rainWeatherColor: #4a5560;
   --snowWeatherColor: #c5d8d6;
+  --text: #383838;
+  --textMuted: #474747;
+  --bg: var(--snowWeatherColor);
 }
 * {
   box-sizing: border-box;
 }
 
+ody.weather-clear {
+  --bg: var(--clearWeatherColor);
+}
+body.weather-partly-cloudy {
+  --bg: var(--partlyCloudyWeatherColor);
+}
+body.weather-cloudy {
+  --bg: var(--cloudyWeatherColor);
+}
+body.weather-fog {
+  --bg: var(--fogWeatherColor);
+}
+body.weather-snow {
+  --bg: var(--snowWeatherColor);
+}
+
+/* rain: dark background, so light text */
+body.weather-rain {
+  --bg: var(--rainWeatherColor);
+  --text: #f4f6f8;
+  --textMuted: #c8c8c8;
+}
+
 body {
   margin: 0;
-  background-color: var(--snowWeatherColor);
+  background-color: var(--bg);
+  color: var(--text);
   transition: background-color 0.5s ease;
+  font-family: 'Nunito', system-ui, sans-serif;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+.heading,
+.dayName {
+  font-weight: 500;
+}
+
+.body {
+  font-weight: 500;
+}
+
+.currDateText,
+.tableHeaderText,
+.sevenDaysHeading,
+.currWeatherCond,
+.currTemp {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
 }
 
 html {
@@ -105,6 +156,7 @@ html {
 
 .currDateText {
   font-size: 1.5rem;
+  font-size: 600;
 }
 
 .currConditionTable {
@@ -149,6 +201,11 @@ html {
   gap: 0.2rem;
   justify-content: space-between;
   text-align: center;
+}
+
+.currConditionsTableBody .body {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 500;
 }
 
 .heading {
@@ -200,4 +257,57 @@ html {
 
 .currTemp {
   font-size: 2.5rem;
+}
+
+.sevenDaysCast {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.sevenDaysHeading {
+  text-align: center;
+  padding: 1.2rem;
+  font-weight: 650;
+  font-size: 1.2rem;
+}
+
+.sevenDaysForecastTable {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 1rem;
+}
+
+.dayBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon.sevenDays {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  min-height: 0;
+  min-width: 0;
+}
+
+.icon.sevenDays {
+  width: 5rem;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.temp > div:first-child {
+  font-weight: 600;
+}
+
+.temp > div:last-child {
+  color: var(--textMuted);
+}
+
+body.weather-rain {
+  filter: invert(1);
 }
