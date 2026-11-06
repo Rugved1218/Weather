@@ -1,14 +1,20 @@
-import "../src/styles.css";
-import { weatherAPIData } from "../src/scripts/ApiCall.js";
-import { searchWeathLoc } from "../src/scripts/Search.js";
+import '../src/styles.css';
+import { StringFn } from './HelperFn/strings.js';
 
-let city = "pune";
-const weatherData = new weatherAPIData(city);
+import { SearchWeather } from '../src/scripts/Search.js';
 
+const string = new StringFn();
+console.log(string.capitallize('rugved'));
 // Taking User Input for location
-const submitBtn = document.querySelector(".submitBtn");
-const searchBar = document.querySelector(".searchBar");
-submitBtn.addEventListener("click", () => {
+const submitBtn = document.querySelector('.submitBtn');
+const searchBar = document.querySelector('.searchBar');
+
+submitBtn.addEventListener('click', async () => {
   const city = searchBar.value;
-  searchWeathLoc(city);
+  const search = new SearchWeather(city);
+  console.log(search);
+  const weatherObj = await search.searchWeathLoc();
+  console.log(weatherObj);
+  const currDateText = document.querySelector('.currDateText');
+  currDateText.textContent = `${weatherObj.city} ${weatherObj.date}`;
 });

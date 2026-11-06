@@ -6,55 +6,55 @@ class StringFn {
   }
 
   temperatureF(string) {
-    return string + "°F";
+    return string + '°F';
   }
 
   title(string) {
-    let strings = string.split(" ");
+    let strings = string.split(' ');
     strings.forEach((stringBr, index) => {
       strings[index] = this.capitallize(stringBr);
     });
-    return strings.join(" ");
+    return strings.join(' ');
   }
 
   distKm(string) {
-    return string + "km";
+    return string + 'km';
   }
 
   percentage(string) {
-    return string + "%";
+    return string + '%';
   }
 
   convertDate(string) {
-    const [day, month, year] = string.split("-");
+    const [year, month, day] = string.split('-');
 
     const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July',
+      'Aug',
+      'Sept',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
 
     const monthName = months[parseInt(month, 10) - 1];
 
-    return `${monthName}, ${day}, ${year}`;
+    return ` ${day}th ${monthName}, ${year}`;
   }
 
   uvHealth(uv) {
     const uvInt = parseInt(uv);
-    if (0 <= uv && uv <= 2) return "Low";
-    else if (3 <= uv && uv <= 5) return "Moderate";
-    else if (6 <= uv && uv <= 7) return "High";
-    else if (8 <= uv && uv <= 10) return "Very High";
-    else if (uv >= 11) return "Extreme";
+    if (0 <= uvInt && uvInt <= 2) return 'Low';
+    else if (3 <= uvInt && uvInt <= 5) return 'Moderate';
+    else if (6 <= uvInt && uvInt <= 7) return 'High';
+    else if (8 <= uvInt && uvInt <= 10) return 'Very High';
+    else if (uvInt >= 11) return 'Extreme';
     else {
       return null;
     }
