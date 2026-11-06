@@ -12,9 +12,25 @@ const searchBar = document.querySelector('.searchBar');
 submitBtn.addEventListener('click', async () => {
   const city = searchBar.value;
   const search = new SearchWeather(city);
-  console.log(search);
   const weatherObj = await search.searchWeathLoc();
-  console.log(weatherObj);
   const currDateText = document.querySelector('.currDateText');
   currDateText.textContent = `${weatherObj.city} ${weatherObj.date}`;
+
+  const visiblityBodyText = document.querySelector('.visibilityBody');
+  visiblityBodyText.textContent = weatherObj.visiblity;
+
+  const humidityBodyText = document.querySelector('.humidityBody');
+  humidityBodyText.textContent = weatherObj.humidity;
+
+  const uvBodyText = document.querySelector('.uvBody');
+  uvBodyText.textContent = weatherObj.uv;
+
+  const maxTempBodyText = document.querySelector('.maxTempBody');
+  maxTempBodyText.textContent = weatherObj.maxTemp;
+
+  const minTempBodyText = document.querySelector('.minTempBody');
+  minTempBodyText.textContent = weatherObj.minTemp;
+
+  const precipProbBodyText = document.querySelector('.precipProbBody');
+  precipProbBodyText.textContent = weatherObj.precipProb;
 });
