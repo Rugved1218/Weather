@@ -7,8 +7,8 @@ export class SearchWeather {
     this.stringFn = new StringFn();
   }
 
-  async searchWeathLoc(citySearch) {
-    const weatherData = new weatherAPIData(citySearch);
+  async searchWeathLoc() {
+    const weatherData = new weatherAPIData(this.city);
     const currWeatherData = await weatherData.getCurrWeatherData();
     console.log(currWeatherData);
 

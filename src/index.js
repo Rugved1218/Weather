@@ -33,4 +33,7 @@ submitBtn.addEventListener('click', async () => {
 
   const precipProbBodyText = document.querySelector('.precipProbBody');
   precipProbBodyText.textContent = weatherObj.precipProb;
+
+  const weatherIcon = document.querySelector('.currWeatherIcons');
+  //weatherIcon.src=`./weatherIcons/dynamicIcons/${weatherObj.}`
 });
