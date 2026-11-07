@@ -59,6 +59,20 @@ class StringFn {
       return null;
     }
   }
+
+  convertWeather2DisplayForm(weather) {
+    const weatherArray = weather.split(',');
+    return weatherArray[0];
+  }
+
+  convertWeather2SVGForm(weather) {
+    const weatherArray = weather.split(',');
+    weather = weatherArray[0];
+    weather = weather.toLowerCase();
+    weather = weather.split(' ');
+    weather = weather.join('-');
+    return weather;
+  }
 }
 
 export { StringFn };

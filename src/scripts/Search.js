@@ -13,6 +13,7 @@ export class SearchWeather {
     console.log(currWeatherData);
 
     let city = currWeatherData.city;
+    city = city.toLowerCase();
     city = this.stringFn.capitallize(city);
     console.log('City:', city);
 
@@ -20,9 +21,13 @@ export class SearchWeather {
     date = this.stringFn.convertDate(date);
     console.log(date);
 
-    let weather = currWeatherData.weather;
-    weather = this.stringFn.title(weather);
-    console.log('Weather:', weather);
+    let weatherDisplay = currWeatherData.weather;
+    weatherDisplay = this.stringFn.convertWeather2DisplayForm(weatherDisplay);
+    console.log('Weather:', weatherDisplay);
+
+    let weatherSvgFormat = currWeatherData.weather;
+    weatherSvgFormat = this.stringFn.convertWeather2SVGForm(weatherSvgFormat);
+    console.log('Weather:', weatherSvgFormat);
 
     let temp = currWeatherData.temp;
     temp = this.stringFn.temperatureF(temp);
@@ -55,7 +60,8 @@ export class SearchWeather {
     return {
       city,
       date,
-      weather,
+      weatherDisplay,
+      weatherSvgFormat,
       temp,
       maxTemp,
       minTemp,
