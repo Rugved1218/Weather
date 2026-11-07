@@ -5,8 +5,8 @@ class StringFn {
     return firstChar + rest;
   }
 
-  temperatureF(string) {
-    return string + '°F';
+  temperatureC(string) {
+    return string + '°C';
   }
 
   title(string) {
@@ -72,6 +72,18 @@ class StringFn {
     weather = weather.split(' ');
     weather = weather.join('-');
     return weather;
+  }
+
+  convertDate2Day(date, index) {
+    if (index == 0) return 'Today';
+    else if (index == 1) return 'Tomorrow';
+
+    const [year, month, day] = date.split('-').map(Number);
+    const formattedDate = new Date(year, month - 1, day);
+    const dayName = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long',
+    }).format(formattedDate);
+    return dayName;
   }
 }
 

@@ -10,52 +10,40 @@ export class SearchWeather {
   async searchWeathLoc() {
     const weatherData = new weatherAPIData(this.city);
     const currWeatherData = await weatherData.getCurrWeatherData();
-    console.log(currWeatherData);
 
     let city = currWeatherData.city;
     city = city.toLowerCase();
     city = this.stringFn.capitallize(city);
-    console.log('City:', city);
 
     let date = currWeatherData.date;
     date = this.stringFn.convertDate(date);
-    console.log(date);
 
     let weatherDisplay = currWeatherData.weather;
     weatherDisplay = this.stringFn.convertWeather2DisplayForm(weatherDisplay);
-    console.log('Weather:', weatherDisplay);
 
     let weatherSvgFormat = currWeatherData.weather;
     weatherSvgFormat = this.stringFn.convertWeather2SVGForm(weatherSvgFormat);
-    console.log('Weather:', weatherSvgFormat);
 
     let temp = currWeatherData.temp;
-    temp = this.stringFn.temperatureF(temp);
-    console.log('Temp:', temp);
+    temp = this.stringFn.temperatureC(temp);
 
     let maxTemp = currWeatherData.maxTemp;
-    maxTemp = this.stringFn.temperatureF(maxTemp);
-    console.log('Temp Max:', maxTemp);
+    maxTemp = this.stringFn.temperatureC(maxTemp);
 
     let minTemp = currWeatherData.minTemp;
-    minTemp = this.stringFn.temperatureF(minTemp);
-    console.log('Temp Min:', minTemp);
+    minTemp = this.stringFn.temperatureC(minTemp);
 
     let uv = currWeatherData.UVIndex;
     const uvHealth = this.stringFn.uvHealth(uv);
-    console.log(`UV Index: ${uv} (${uvHealth})`);
 
     let humidity = currWeatherData.humidity;
     humidity = this.stringFn.percentage(humidity);
-    console.log('Humidity:', humidity);
 
     let precipProb = currWeatherData.precipProb;
     precipProb = this.stringFn.percentage(precipProb);
-    console.log('Precipitation Probablity:', precipProb);
 
     let visiblity = currWeatherData.visiblity;
     visiblity = this.stringFn.distKm(visiblity);
-    console.log('Visiblity:', visiblity);
 
     return {
       city,
@@ -66,9 +54,35 @@ export class SearchWeather {
       maxTemp,
       minTemp,
       uv,
+      uvHealth,
       humidity,
       precipProb,
       visiblity,
+    };
+  }
+
+  async searchDayWeathLoc(index) {
+    const weatherData = new weatherAPIData(this.city);
+    const dayWeatherData = await weatherData.getDayWeatherData(index);
+
+    let date = dayWeatherData.date;
+    let day = this.stringFn.convertDate2Day(date, index);
+
+    let weatherIcon = dayWeatherData.weather;
+    weatherIcon = this.stringFn.convertWeather2SVGForm(weatherIcon);
+
+    let maxTemp = dayWeatherData.maxTemp;
+    maxTemp = this.stringFn.temperatureC(maxTemp);
+
+    let minTemp = dayWeatherData.minTemp;
+    minTemp = this.stringFn.temperatureC(minTemp);
+
+    return {
+      date,
+      day,
+      weatherIcon,
+      maxTemp,
+      minTemp,
     };
   }
 }
