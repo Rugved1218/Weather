@@ -8,32 +8,37 @@
   --text: #383838;
   --textMuted: #474747;
   --bg: var(--snowWeatherColor);
+  --cardTop: rgba(15, 26, 36, 0.1);
+  --cardBody: rgba(255, 255, 255, 0.45);
+  --cardBorder: rgba(15, 26, 36, 0.12);
 }
 * {
   box-sizing: border-box;
 }
 
-ody.weather-clear {
+body.clear {
   --bg: var(--clearWeatherColor);
 }
-body.weather-partly-cloudy {
+body.partly-cloudy {
   --bg: var(--partlyCloudyWeatherColor);
 }
-body.weather-cloudy {
+body.cloudy {
   --bg: var(--cloudyWeatherColor);
 }
-body.weather-fog {
+body.fog {
   --bg: var(--fogWeatherColor);
 }
-body.weather-snow {
+body.snow {
   --bg: var(--snowWeatherColor);
 }
 
-/* rain: dark background, so light text */
-body.weather-rain {
+body.rain {
   --bg: var(--rainWeatherColor);
   --text: #f4f6f8;
   --textMuted: #c8c8c8;
+  --cardTop: rgba(255, 255, 255, 0.14);
+  --cardBody: rgba(255, 255, 255, 0.06);
+  --cardBorder: rgba(255, 255, 255, 0.18);
 }
 
 body {
