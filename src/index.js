@@ -43,7 +43,8 @@ const staticIcons = {
 const submitBtn = document.querySelector('.submitBtn');
 const searchBar = document.querySelector('.searchBar');
 
-async function MainEvent() {
+async function MainEvent(event) {
+  event.preventDefault();
   const city = searchBar.value;
   const search = new SearchWeather(city);
   try {
@@ -110,9 +111,11 @@ async function MainEvent() {
   }
 }
 
-submitBtn.addEventListener('click', MainEvent());
+submitBtn.addEventListener('click', (event) => {
+  MainEvent(event);
+});
 searchBar.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    MainEvent();
+    MainEvent(event);
   }
 });
