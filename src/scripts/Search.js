@@ -5,11 +5,16 @@ export class SearchWeather {
   constructor(citySearch) {
     this.city = citySearch;
     this.stringFn = new StringFn();
+    this.weatherData = new weatherAPIData(this.city);
+    this.data;
   }
 
-  async searchWeathLoc() {
-    const weatherData = new weatherAPIData(this.city);
-    const currWeatherData = await weatherData.getCurrWeatherData();
+  async load() {
+    this.data = await this.weatherData.callAPI();
+  }
+
+  searchWeathLoc() {
+    const currWeatherData = this.weatherData.getCurrWeatherData(this.data);
 
     let city = currWeatherData.city;
     city = city.toLowerCase();
@@ -61,9 +66,8 @@ export class SearchWeather {
     };
   }
 
-  async searchDayWeathLoc(index) {
-    const weatherData = new weatherAPIData(this.city);
-    const dayWeatherData = await weatherData.getDayWeatherData(index);
+  searchDayWeathLoc(index) {
+    const dayWeatherData = this.weatherData.getDayWeatherData(this.data, index);
 
     let date = dayWeatherData.date;
     let day = this.stringFn.convertDate2Day(date, index);

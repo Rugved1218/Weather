@@ -47,10 +47,12 @@ submitBtn.addEventListener('click', async () => {
   const city = searchBar.value;
   const search = new SearchWeather(city);
   try {
-    const currWeatherObj = await search.searchWeathLoc();
-    const forecastData = await Promise.all(
-      Array.from({ length: 7 }, (_, i) => search.searchDayWeathLoc(i)),
-    );
+    await search.load();
+    const currWeatherObj = search.searchWeathLoc();
+    let forecastData = [];
+    for (let i = 0; i < 7; i++) {
+      forecastData[i] = search.searchDayWeathLoc(i);
+    }
 
     const currDateText = document.querySelector('.currDateText');
     currDateText.textContent = `${currWeatherObj.city} ${currWeatherObj.date}`;

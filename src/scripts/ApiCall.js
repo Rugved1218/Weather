@@ -26,8 +26,7 @@ class weatherAPIData {
     return responseJSON;
   }
 
-  async getCurrWeatherData() {
-    let responseJSON = await this.callAPI();
+  getCurrWeatherData(responseJSON) {
     console.log(responseJSON);
     let currWeather = responseJSON.days[0];
     const currWeatherData = {
@@ -45,8 +44,7 @@ class weatherAPIData {
     return currWeatherData;
   }
 
-  async getDayWeatherData(index) {
-    let responseJSON = await this.callAPI();
+  getDayWeatherData(responseJSON, index) {
     let dayWeather = responseJSON.days[index];
 
     const dayWeatherData = {

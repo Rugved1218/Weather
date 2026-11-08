@@ -27,8 +27,6 @@ let staticIconsAlt = [
   'wind-day-static',
 ];
 function resetPage() {
-  const currDateText = document.querySelector('.currDateText');
-
   const visiblityBodyText = document.querySelector('.visibilityBody');
   visiblityBodyText.textContent = '--';
 
