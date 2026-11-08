@@ -43,7 +43,7 @@ const staticIcons = {
 const submitBtn = document.querySelector('.submitBtn');
 const searchBar = document.querySelector('.searchBar');
 
-submitBtn.addEventListener('click', async () => {
+async function MainEvent() {
   const city = searchBar.value;
   const search = new SearchWeather(city);
   try {
@@ -96,8 +96,6 @@ submitBtn.addEventListener('click', async () => {
     let minTemp = document.querySelectorAll('.minTemp.sevenDays');
 
     forecastData.forEach((dayWeatherObj, i) => {
-      console.log(`Day ${i + 1}`);
-      console.log(dayWeatherObj);
       dayHeading[i].textContent = dayWeatherObj.day;
       dayIcon[i].src = staticIcons[dayWeatherObj.weatherIcon];
       dayIcon[i].alt = `${dayWeatherObj.weatherIcon}-static-icon`;
@@ -109,5 +107,12 @@ submitBtn.addEventListener('click', async () => {
     currDateText.textContent = error.message;
     currDateText.classList.add('error');
     resetPage();
+  }
+}
+
+submitBtn.addEventListener('click', MainEvent());
+searchBar.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    MainEvent();
   }
 });
