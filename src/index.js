@@ -73,6 +73,7 @@ submitBtn.addEventListener('click', async () => {
 
   const weatherIcon = document.querySelector('.currWeatherIcons');
   weatherIcon.src = dynamicIcons[currWeatherObj.weatherSvgFormat];
+  weatherIcon.classList.remove('empty');
   weatherIcon.alt = `${currWeatherObj.weatherDisplay} dynamic icon`;
 
   const currWeatherCondTextDisplay = document.querySelector('.currWeatherCond');

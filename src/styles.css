@@ -242,8 +242,12 @@ html {
   height: 26rem;
   max-height: 100%;
   max-width: 100%;
+  transition: opacity 0.3s ease;
 }
 
+.currWeatherIcons.empty {
+  opacity: 0.2;
+}
 .currWeatherText {
   display: flex;
   justify-content: center;
