@@ -4,7 +4,7 @@ A weather app that shows current conditions and a 7-day forecast for any city, b
 
 **Live demo:** https://rugved1218.github.io/Weather/
 
-![Weather app screenshot](./screenshot/rainresult.png)
+![Weather app screenshot](./screenshots/rainresult.png)
 
 ## Features
 
