@@ -320,3 +320,7 @@ html {
 body.weather-rain {
   filter: invert(1);
 }
+
+.error {
+  color: red;
+}

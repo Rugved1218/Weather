@@ -41,66 +41,71 @@ const staticIcons = {
 
 import { SearchWeather } from '../src/scripts/Search.js';
 
-const string = new StringFn();
-console.log(string.capitallize('rugved'));
 const submitBtn = document.querySelector('.submitBtn');
 const searchBar = document.querySelector('.searchBar');
 
 submitBtn.addEventListener('click', async () => {
   const city = searchBar.value;
   const search = new SearchWeather(city);
-  const currWeatherObj = await search.searchWeathLoc();
-  const currDateText = document.querySelector('.currDateText');
-  currDateText.textContent = `${currWeatherObj.city} ${currWeatherObj.date}`;
+  try {
+    const currWeatherObj = await search.searchWeathLoc();
+    const forecastData = await Promise.all(
+      Array.from({ length: 7 }, (_, i) => search.searchDayWeathLoc(i)),
+    );
 
-  const visiblityBodyText = document.querySelector('.visibilityBody');
-  visiblityBodyText.textContent = currWeatherObj.visiblity;
+    const currDateText = document.querySelector('.currDateText');
+    currDateText.textContent = `${currWeatherObj.city} ${currWeatherObj.date}`;
+    currDateText.classList.remove('error');
 
-  const humidityBodyText = document.querySelector('.humidityBody');
-  humidityBodyText.textContent = currWeatherObj.humidity;
+    const visiblityBodyText = document.querySelector('.visibilityBody');
+    visiblityBodyText.textContent = currWeatherObj.visiblity;
 
-  const uvBodyText = document.querySelector('.uvBody');
-  uvBodyText.textContent = `${currWeatherObj.uv} (${currWeatherObj.uvHealth})`;
+    const humidityBodyText = document.querySelector('.humidityBody');
+    humidityBodyText.textContent = currWeatherObj.humidity;
 
-  const maxTempBodyText = document.querySelector('.maxTempBody');
-  maxTempBodyText.textContent = currWeatherObj.maxTemp;
+    const uvBodyText = document.querySelector('.uvBody');
+    uvBodyText.textContent = `${currWeatherObj.uv} (${currWeatherObj.uvHealth})`;
 
-  const minTempBodyText = document.querySelector('.minTempBody');
-  minTempBodyText.textContent = currWeatherObj.minTemp;
+    const maxTempBodyText = document.querySelector('.maxTempBody');
+    maxTempBodyText.textContent = currWeatherObj.maxTemp;
 
-  const precipProbBodyText = document.querySelector('.precipProbBody');
-  precipProbBodyText.textContent = currWeatherObj.precipProb;
+    const minTempBodyText = document.querySelector('.minTempBody');
+    minTempBodyText.textContent = currWeatherObj.minTemp;
 
-  const weatherIcon = document.querySelector('.currWeatherIcons');
-  weatherIcon.src = dynamicIcons[currWeatherObj.weatherSvgFormat];
-  weatherIcon.classList.remove('empty');
-  weatherIcon.alt = `${currWeatherObj.weatherDisplay} dynamic icon`;
+    const precipProbBodyText = document.querySelector('.precipProbBody');
+    precipProbBodyText.textContent = currWeatherObj.precipProb;
 
-  const currWeatherCondTextDisplay = document.querySelector('.currWeatherCond');
-  currWeatherCondTextDisplay.textContent = currWeatherObj.weatherDisplay;
+    const weatherIcon = document.querySelector('.currWeatherIcons');
+    weatherIcon.src = dynamicIcons[currWeatherObj.weatherSvgFormat];
+    weatherIcon.classList.remove('empty');
+    weatherIcon.alt = `${currWeatherObj.weatherDisplay} dynamic icon`;
 
-  const currWeatherTempTextDisplay = document.querySelector('.currTemp');
-  currWeatherTempTextDisplay.textContent = currWeatherObj.temp;
+    const currWeatherCondTextDisplay = document.querySelector('.currWeatherCond');
+    currWeatherCondTextDisplay.textContent = currWeatherObj.weatherDisplay;
 
-  document.body.classList = ' ';
-  document.body.classList = `${currWeatherObj.weatherSvgFormat}`;
+    const currWeatherTempTextDisplay = document.querySelector('.currTemp');
+    currWeatherTempTextDisplay.textContent = currWeatherObj.temp;
 
-  let dayHeading = document.querySelectorAll('.dayName.sevenDays');
-  let dayIcon = document.querySelectorAll('.icon.sevenDays');
-  let maxTemp = document.querySelectorAll('.maxTemp.sevenDays');
-  let minTemp = document.querySelectorAll('.minTemp.sevenDays');
+    document.body.classList = ' ';
+    document.body.classList = `${currWeatherObj.weatherSvgFormat}`;
 
-  const forecastData = await Promise.all(
-    Array.from({ length: 7 }, (_, i) => search.searchDayWeathLoc(i)),
-  );
+    let dayHeading = document.querySelectorAll('.dayName.sevenDays');
+    let dayIcon = document.querySelectorAll('.icon.sevenDays');
+    let maxTemp = document.querySelectorAll('.maxTemp.sevenDays');
+    let minTemp = document.querySelectorAll('.minTemp.sevenDays');
 
-  forecastData.forEach((dayWeatherObj, i) => {
-    console.log(`Day ${i + 1}`);
-    console.log(dayWeatherObj);
-    dayHeading[i].textContent = dayWeatherObj.day;
-    dayIcon[i].src = staticIcons[dayWeatherObj.weatherIcon];
-    dayIcon[i].alt = `${dayWeatherObj.weatherIcon} static icon`;
-    maxTemp[i].textContent = dayWeatherObj.maxTemp;
-    minTemp[i].textContent = dayWeatherObj.minTemp;
-  });
+    forecastData.forEach((dayWeatherObj, i) => {
+      console.log(`Day ${i + 1}`);
+      console.log(dayWeatherObj);
+      dayHeading[i].textContent = dayWeatherObj.day;
+      dayIcon[i].src = staticIcons[dayWeatherObj.weatherIcon];
+      dayIcon[i].alt = `${dayWeatherObj.weatherIcon} static icon`;
+      maxTemp[i].textContent = dayWeatherObj.maxTemp;
+      minTemp[i].textContent = dayWeatherObj.minTemp;
+    });
+  } catch (error) {
+    const currDateText = document.querySelector('.currDateText');
+    currDateText.textContent = error.message;
+    currDateText.classList.add('error');
+  }
 });
