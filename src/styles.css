@@ -92,43 +92,35 @@ html {
   padding: 0.6rem 1.25rem;
 }
 
+.searchBox {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .searchBar {
-  border: 1px solid #ccc;
-  background-color: white;
-  width: 80%;
-  height: 3rem;
-  border-radius: 1.5rem;
+  width: 100%;
   box-sizing: border-box;
-  padding: 0 1.1rem;
-  font-size: 1rem;
+  padding: 14px 56px 14px 22px;
+  border-radius: 999px;
+  border: 1px solid #c9d3d6;
   outline: none;
 }
 
-.searchBar:focus {
-  border-color: #777;
-}
-
 .submitBtn {
-  height: 3rem;
-  width: 3rem;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
   border: none;
-  border-radius: 100px;
-  color: white;
-  background-color: #6c757d;
-
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
+  border-radius: 50%;
+  background: transparent;
   cursor: pointer;
-}
-
-.submitBtn:hover {
-  background-color: dimgray;
-}
-
-.submitBtn:active {
-  transform: scale(0.95);
 }
 
 .weatherDisplay {

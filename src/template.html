@@ -14,14 +14,31 @@
   <body>
     <div class="contentGrid">
       <header class="header">
-        <input
-          class="searchBar"
-          id="searchCity"
-          name="searchCity"
-          type="text"
-          placeholder="Enter City"
-        />
-        <button class="submitBtn" type="button">🔍</button>
+        <div class="searchBox">
+          <input
+            class="searchBar"
+            id="searchCity"
+            name="searchCity"
+            type="text"
+            placeholder="Enter City"
+          />
+          <button class="submitBtn" type="button">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="21" y2="21" />
+            </svg>
+          </button>
+        </div>
       </header>
       <div class="weatherDisplay">
         <div class="current">
