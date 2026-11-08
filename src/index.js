@@ -1,5 +1,6 @@
 import '../src/styles.css';
-import { StringFn } from './HelperFn/strings.js';
+import { SearchWeather } from '../src/scripts/Search.js';
+import { resetPage } from './scripts/resetPage.js';
 
 import clearDynamicIcon from './weatherIcons/dynamicIcons/clear.svg';
 import cloudyDynamicIcon from './weatherIcons/dynamicIcons/cloudy.svg';
@@ -38,8 +39,6 @@ const staticIcons = {
   snow: snowStaticIcon,
   wind: windStaticIcon,
 };
-
-import { SearchWeather } from '../src/scripts/Search.js';
 
 const submitBtn = document.querySelector('.submitBtn');
 const searchBar = document.querySelector('.searchBar');
@@ -99,7 +98,7 @@ submitBtn.addEventListener('click', async () => {
       console.log(dayWeatherObj);
       dayHeading[i].textContent = dayWeatherObj.day;
       dayIcon[i].src = staticIcons[dayWeatherObj.weatherIcon];
-      dayIcon[i].alt = `${dayWeatherObj.weatherIcon} static icon`;
+      dayIcon[i].alt = `${dayWeatherObj.weatherIcon}-static-icon`;
       maxTemp[i].textContent = dayWeatherObj.maxTemp;
       minTemp[i].textContent = dayWeatherObj.minTemp;
     });
@@ -107,5 +106,6 @@ submitBtn.addEventListener('click', async () => {
     const currDateText = document.querySelector('.currDateText');
     currDateText.textContent = error.message;
     currDateText.classList.add('error');
+    resetPage();
   }
 });
